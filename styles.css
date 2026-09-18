@@ -472,13 +472,6 @@ input, select, textarea {
   width: 100%;
 }
 
-.location-row {
-  display: flex;
-  gap: 0.6em;
-  flex-wrap: wrap;
-}
-.location-row input { flex: 1 1 200px; }
-
 .field-hint {
   font-size: 0.8rem;
   color: var(--steel);
@@ -585,6 +578,7 @@ input, select, textarea {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
 }
 .payment-methods li {
