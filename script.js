@@ -22,9 +22,16 @@ if (locationBtn) {
         locationInput.value = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
         locationStatus.textContent = 'Location added. You can still edit this field.';
       },
-      () => {
-        locationStatus.textContent = 'Couldn\'t get your location — please type your address instead.';
-      }
+      (error) => {
+        if (error.code === error.PERMISSION_DENIED) {
+          locationStatus.textContent = 'Location access was blocked — please type your address instead.';
+        } else if (error.code === error.TIMEOUT) {
+          locationStatus.textContent = 'Location took too long to find — please type your address instead.';
+        } else {
+          locationStatus.textContent = 'Couldn\'t get your location — please type your address instead.';
+        }
+      },
+      { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
     );
   });
 }
